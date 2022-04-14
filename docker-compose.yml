@@ -1,10 +1,15 @@
 version: "3.9"
 services:
     db:
-        image: "mcr.microsoft.com/mssql/server"
+        image: postgres:14.1-alpine
         environment:
-
-            SA_PASSWORD: "Your_password123"
-            ACCEPT_EULA: "Y"
+            - POSTGRES_USER=root
+            - POSTGRES_PASSWORD=enem123
+            - POSTGRES_DB=enem
         ports:
-            - 1433:1433
+            - '5432:5432'
+    
+    admin:    
+        image: adminer    
+        ports:      
+            - "8080:8080"
